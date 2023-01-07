@@ -18,4 +18,33 @@ button {
   color: #c5c6c7;
   padding: 15px;
   font-family: Questrial;
+  width: 200px;
+  margin: 15px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input {
+  background-color: #121215;
+  border: 1px solid #66fcf1;
+  color: #c5c6c7;
+  padding: 15px;
+  font-family: Questrial;
+  width: 200px;
+  margin: 15px;
+}
+
+label {
+  color: #c5c6c7;
+  padding: 15px;
+  font-family: Questrial;
+}
+
+.wrapper {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
