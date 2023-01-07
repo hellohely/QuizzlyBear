@@ -7,7 +7,7 @@
     <input type="text" placeholder="Luke Skywalker" />
     <ul>
       <li *ngFor="let question of questions">
-        <h3>Question 1</h3>
+        <h3>Question {{ question }}</h3>
         <label>Youtube Link</label>
         <input type="text" placeholder="https://www.youtube.com/yoursong" />
         <label>Question Text</label>
@@ -18,8 +18,10 @@
         <input type="text" placeholder="Answer 3" />
         <input type="text" placeholder="Answer 4" />
       </li>
-      <button>ADD ANOTHER QUESTION</button>
+      <button type="button" (click)="addQuestion(questions)">
+        ADD ANOTHER QUESTION
+      </button>
     </ul>
-    <button [routerLink]="['../']">SAVE QUIZ</button>
+    <button type="submit" [routerLink]="['../']">SAVE QUIZ</button>
   </form>
 </div>

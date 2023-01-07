@@ -10,5 +10,12 @@ export class CreateQuizComponent implements OnInit {
 
   questions = [1];
 
+  addQuestion(array: number[]) {
+    const nextElement = array.length + 1;
+
+    // Use the push() method to add the new element to the end of the array
+    array.push(nextElement);
+  }
+
   ngOnInit(): void {}
 }
