@@ -2,9 +2,24 @@
   <h1>Create a Music Quiz!</h1>
   <form>
     <label>Name of quiz</label>
-    <input type=" text" placeholder="My awesome music quiz" />
+    <input type="text" placeholder="My Awesome Music Quiz" />
     <label>Your Name</label>
-    <input type=" text" placeholder="Luke Skywalker" />
-    <button>SAVE QUIZ</button>
+    <input type="text" placeholder="Luke Skywalker" />
+    <ul>
+      <li>
+        <h3>Question 1</h3>
+        <label>Youtube link</label>
+        <input type="text" placeholder="https://www.youtube.com/yoursong" />
+        <label>Question text</label>
+        <input type="text" placeholder="What is the name of this song?" />
+        <label>Answer Options</label>
+        <input type="text" placeholder="Answer 1" />
+        <input type="text" placeholder="Answer 2" />
+        <input type="text" placeholder="Answer 3" />
+        <input type="text" placeholder="Answer 4" />
+        <button>ADD ANOTHER QUESTION</button>
+      </li>
+    </ul>
+    <button [routerLink]="['../']">SAVE QUIZ</button>
   </form>
 </div>
