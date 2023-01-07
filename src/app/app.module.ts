@@ -5,9 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateQuizComponent } from './components/create-quiz/create-quiz.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { JoinQuizComponent } from './components/join-quiz/join-quiz.component';
+import { QuizLobbyComponent } from './components/quiz-lobby/quiz-lobby.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateQuizComponent, LandingPageComponent],
+  declarations: [
+    AppComponent,
+    CreateQuizComponent,
+    LandingPageComponent,
+    JoinQuizComponent,
+    QuizLobbyComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
