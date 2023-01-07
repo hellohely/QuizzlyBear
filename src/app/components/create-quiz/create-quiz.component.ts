@@ -8,5 +8,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class CreateQuizComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
+  questions = [1];
+
   ngOnInit(): void {}
 }

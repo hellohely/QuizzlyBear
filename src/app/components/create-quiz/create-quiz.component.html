@@ -1,24 +1,24 @@
 <div class="wrapper">
   <h1>Create a Music Quiz!</h1>
   <form>
-    <label>Name of quiz</label>
+    <label>Name of Quiz</label>
     <input type="text" placeholder="My Awesome Music Quiz" />
     <label>Your Name</label>
     <input type="text" placeholder="Luke Skywalker" />
     <ul>
-      <li>
+      <li *ngFor="let question of questions">
         <h3>Question 1</h3>
-        <label>Youtube link</label>
+        <label>Youtube Link</label>
         <input type="text" placeholder="https://www.youtube.com/yoursong" />
-        <label>Question text</label>
+        <label>Question Text</label>
         <input type="text" placeholder="What is the name of this song?" />
         <label>Answer Options</label>
         <input type="text" placeholder="Answer 1" />
         <input type="text" placeholder="Answer 2" />
         <input type="text" placeholder="Answer 3" />
         <input type="text" placeholder="Answer 4" />
-        <button>ADD ANOTHER QUESTION</button>
       </li>
+      <button>ADD ANOTHER QUESTION</button>
     </ul>
     <button [routerLink]="['../']">SAVE QUIZ</button>
   </form>
