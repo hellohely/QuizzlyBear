@@ -1,5 +1,10 @@
 import { answerOption } from './answerOption';
 
 export class Question {
-  constructor(question: string, link: string, answerOptions: answerOption[]) {}
+  constructor(
+    questionId: string,
+    questionString: string,
+    link: string,
+    answerOptions: answerOption[]
+  ) {}
 }
