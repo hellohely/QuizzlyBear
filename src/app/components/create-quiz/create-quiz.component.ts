@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Quiz } from 'src/app/models/quiz';
 
 @Component({
   selector: 'app-create-quiz',
@@ -11,6 +12,12 @@ export class CreateQuizComponent implements OnInit {
 
   questions = [1];
 
+  quiz: Quiz = {
+    quizName: '',
+    quizCreator: '',
+    quizQuestions: [],
+  };
+
   addQuestion(array: number[]) {
     const nextElement = array.length + 1;
 
@@ -19,7 +26,7 @@ export class CreateQuizComponent implements OnInit {
   }
 
   saveQuiz(form: NgForm) {
-    console.log(form.value);
+    console.log(this.quiz.quizCreator);
   }
 
   ngOnInit(): void {}

@@ -5,14 +5,14 @@
     <input
       type="text"
       placeholder="My Awesome Music Quiz"
-      ngModel
+      [(ngModel)]="quiz.quizName"
       name="quizName"
     />
     <label class="formlabel">Your Name</label>
     <input
       type="text"
       placeholder="Luke Skywalker"
-      ngModel
+      [(ngModel)]="quiz.quizCreator"
       name="creatorName"
     />
     <ul>
