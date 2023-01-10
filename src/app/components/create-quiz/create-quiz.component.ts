@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -15,6 +16,10 @@ export class CreateQuizComponent implements OnInit {
 
     // Use the push() method to add the new element to the end of the array
     array.push(nextElement);
+  }
+
+  saveQuiz(form: NgForm) {
+    console.log(form.value);
   }
 
   ngOnInit(): void {}

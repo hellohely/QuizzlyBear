@@ -1,27 +1,59 @@
 <div class="wrapper">
   <h1>Create a Music Quiz!</h1>
-  <form>
-    <label>Name of Quiz</label>
-    <input type="text" placeholder="My Awesome Music Quiz" />
-    <label>Your Name</label>
-    <input type="text" placeholder="Luke Skywalker" />
+  <form (ngSubmit)="saveQuiz(f)" #f="ngForm">
+    <label class="formlabel">Name of Quiz</label>
+    <input
+      type="text"
+      placeholder="My Awesome Music Quiz"
+      ngModel
+      name="quizName"
+    />
+    <label class="formlabel">Your Name</label>
+    <input
+      type="text"
+      placeholder="Luke Skywalker"
+      ngModel
+      name="creatorName"
+    />
     <ul>
       <li *ngFor="let question of questions">
         <h3>Question {{ question }}</h3>
-        <label>Youtube Link</label>
-        <input type="text" placeholder="https://www.youtube.com/yoursong" />
-        <label>Question Text</label>
-        <input type="text" placeholder="What is the name of this song?" />
-        <label>Answer Options</label>
-        <input type="text" placeholder="Answer 1" />
-        <input type="text" placeholder="Answer 2" />
-        <input type="text" placeholder="Answer 3" />
-        <input type="text" placeholder="Answer 4" />
+        <label class="formlabel">Youtube Link</label>
+        <input
+          type="text"
+          placeholder="https://www.youtube.com/yoursong"
+          ngModel
+          name="youtubeLink"
+        />
+        <label class="formlabel">Question Text</label>
+        <input
+          type="text"
+          placeholder="What is the name of this song?"
+          ngModel
+          name="question"
+        />
+
+        <label class="formlabel">Answer Options</label>
+        <div class="answer">
+          <input
+            type="text"
+            placeholder="Answer 1"
+            ngModel
+            name="answerOption"
+          />
+          <div class="correct">
+            <input type="checkbox" id="switch" ngModel name="switch" /><label
+              for="switch"
+              class="switch"
+            ></label>
+            <p>Mark as correct</p>
+          </div>
+        </div>
       </li>
       <button type="button" (click)="addQuestion(questions)">
         ADD ANOTHER QUESTION
       </button>
     </ul>
-    <button type="submit" [routerLink]="['../']">SAVE QUIZ</button>
+    <button type="submit">SAVE QUIZ</button>
   </form>
 </div>

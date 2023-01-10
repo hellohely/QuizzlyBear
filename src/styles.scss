@@ -58,11 +58,11 @@ input {
   color: #c5c6c7;
   padding: 15px;
   font-family: Questrial;
-  width: 200px;
+  width: 300px;
   margin: 15px;
 }
 
-label {
+.formlabel {
   color: #c5c6c7;
   padding: 15px;
   font-family: Questrial;
@@ -79,4 +79,57 @@ label {
 form {
   display: flex;
   flex-direction: column;
+}
+
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  display: none;
+}
+
+.switch {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 50px;
+  height: 25px;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.switch:after {
+  content: "";
+  position: absolute;
+  top: 1.25px;
+  left: 1.25px;
+  width: 22.5px;
+  height: 22.5px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+input:checked + .switch {
+  background: #66fcf1;
+}
+
+input:checked + .switch:after {
+  left: calc(100% - 1.25px);
+  transform: translateX(-100%);
+}
+
+.switch:active:after {
+  width: 32.5px;
+}
+
+.correct {
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-left: 15px;
+  }
 }
