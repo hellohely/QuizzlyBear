@@ -1,3 +1,5 @@
-export class answerOption {
-  constructor(answerOption: string, isAnswer: boolean) {}
+export interface answerOption {
+  answerId: string;
+  answerString: string;
+  isAnswer: boolean;
 }

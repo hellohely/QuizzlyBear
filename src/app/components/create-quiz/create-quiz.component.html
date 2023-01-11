@@ -1,6 +1,6 @@
 <div class="wrapper">
   <h1>Create a Music Quiz!</h1>
-  <form (ngSubmit)="saveQuiz(f)" #f="ngForm">
+  <form (ngSubmit)="saveQuiz()">
     <label class="formlabel">Name of Quiz</label>
     <input
       type="text"
@@ -16,43 +16,43 @@
       name="creatorName"
     />
     <ul>
-      <li *ngFor="let question of questions">
-        <h3>Question {{ question }}</h3>
+      <li *ngFor="let question of questions; let i = index">
+        <h3>Question {{ i + 1 }}</h3>
         <label class="formlabel">Youtube Link</label>
         <input
           type="text"
           placeholder="https://www.youtube.com/yoursong"
-          ngModel
+          [(ngModel)]="question.link"
           name="youtubeLink"
         />
         <label class="formlabel">Question Text</label>
         <input
           type="text"
           placeholder="What is the name of this song?"
-          ngModel
+          [(ngModel)]="question.questionString"
           name="question"
         />
 
         <label class="formlabel">Answer Options</label>
-        <div class="answer">
+        <div class="answer" *ngFor="let answerOption of question.answerOptions">
           <input
             type="text"
-            placeholder="Answer 1"
-            ngModel
+            placeholder="Write an answer option here"
+            [(ngModel)]="answerOption.answerString"
             name="answerOption"
           />
-          <div class="correct">
-            <input type="checkbox" id="switch" ngModel name="switch" /><label
-              for="switch"
-              class="switch"
-            ></label>
+          <!-- <div class="correct">
+            <input
+              type="checkbox"
+              id="1"
+              [(ngModel)]="answerOption.isAnswer"
+              name="switch"
+            /><label for="1" class="switch"></label>
             <p>Mark as correct</p>
-          </div>
+          </div> -->
         </div>
       </li>
-      <button type="button" (click)="addQuestion(questions)">
-        ADD ANOTHER QUESTION
-      </button>
+      <button type="button">ADD ANOTHER QUESTION</button>
     </ul>
     <button type="submit">SAVE QUIZ</button>
   </form>
