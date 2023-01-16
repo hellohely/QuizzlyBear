@@ -23,24 +23,33 @@
           type="text"
           placeholder="https://www.youtube.com/yoursong"
           [(ngModel)]="question.link"
-          name="youtubeLink"
+          name="youtubeLink{{ i }}"
         />
         <label class="formlabel">Question Text</label>
         <input
           type="text"
           placeholder="What is the name of this song?"
           [(ngModel)]="question.questionString"
-          name="question"
+          name="question{{ i }}"
         />
 
         <label class="formlabel">Answer Options</label>
-        <div class="answer" *ngFor="let answerOption of question.answerOptions">
+        <div
+          class="answer"
+          *ngFor="let answerOption of question.answerOptions; let i = index"
+        >
+          <p *ngIf="answerOption.isAnswer" class="answerInfo">
+            Write the correct answer here
+          </p>
           <input
             type="text"
-            placeholder="Write an answer option here"
+            placeholder="Answer"
             [(ngModel)]="answerOption.answerString"
-            name="answerOption"
+            name="{{ answerOption.answerId }}"
           />
+          <p *ngIf="answerOption.isAnswer" class="answerInfo">
+            Write the incorrect answer options here
+          </p>
           <!-- <div class="correct">
             <input
               type="checkbox"
@@ -52,7 +61,9 @@
           </div> -->
         </div>
       </li>
-      <button type="button">ADD ANOTHER QUESTION</button>
+      <button type="button" (click)="addQuestion()">
+        ADD ANOTHER QUESTION
+      </button>
     </ul>
     <button type="submit">SAVE QUIZ</button>
   </form>

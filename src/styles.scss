@@ -66,6 +66,7 @@ input {
   color: #c5c6c7;
   padding: 15px;
   font-family: Questrial;
+  font-size: 20px;
 }
 
 .wrapper {
@@ -132,4 +133,8 @@ input:checked + .switch:after {
   p {
     margin-left: 15px;
   }
+}
+
+.answerInfo {
+  text-align: center;
 }

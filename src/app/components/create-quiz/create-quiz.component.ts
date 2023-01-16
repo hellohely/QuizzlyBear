@@ -33,21 +33,33 @@ export class CreateQuizComponent implements OnInit {
     },
   ];
 
+  addQuestion() {
+    let addedQuestion = {
+      questionId: nanoid(),
+      questionString: '',
+      link: '',
+      answerOptions: [
+        { answerId: nanoid(), answerString: '', isAnswer: true },
+        { answerId: nanoid(), answerString: '', isAnswer: false },
+        { answerId: nanoid(), answerString: '', isAnswer: false },
+        { answerId: nanoid(), answerString: '', isAnswer: false },
+      ],
+    };
+    this.questions.push(addedQuestion);
+  }
+
   // addQuestion(array: number[]) {
   //   const nextElement = array.length + 1;
   //   array.push(nextElement);
   // }
 
   saveQuiz() {
-    console.log('Quiz: ', this.quiz);
-    console.log('Questions: ', this.questions);
-
     this.questions.forEach((question) => {
       this.quiz.quizQuestions.push(question.questionId);
-      console.log(this.quiz);
     });
 
-    //For each question in questions, push question.id to quiz.quizQuestions array
+    console.log('Quiz: ', this.quiz);
+    console.log('Questions: ', this.questions);
   }
 
   ngOnInit(): void {}
