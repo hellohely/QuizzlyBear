@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -5,13 +6,18 @@ import { nanoid } from 'nanoid';
 import { answerOption } from 'src/app/models/answerOption';
 import { Question } from 'src/app/models/question';
 import { Quiz } from 'src/app/models/quiz';
+import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
   selector: 'app-create-quiz',
   templateUrl: './create-quiz.component.html',
 })
 export class CreateQuizComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private quizService: QuizService
+  ) {}
 
   quiz: Quiz = {
     quizName: '',
@@ -48,18 +54,13 @@ export class CreateQuizComponent implements OnInit {
     this.questions.push(addedQuestion);
   }
 
-  // addQuestion(array: number[]) {
-  //   const nextElement = array.length + 1;
-  //   array.push(nextElement);
-  // }
-
   saveQuiz() {
     this.questions.forEach((question) => {
       this.quiz.quizQuestions.push(question.questionId);
     });
 
-    console.log('Quiz: ', this.quiz);
-    console.log('Questions: ', this.questions);
+    this.quizService.saveQuiz(this.quiz);
+    this.quizService.saveQuestions(this.questions);
   }
 
   ngOnInit(): void {}

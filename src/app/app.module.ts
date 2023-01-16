@@ -8,6 +8,7 @@ import { CreateQuizComponent } from './components/create-quiz/create-quiz.compon
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { JoinQuizComponent } from './components/join-quiz/join-quiz.component';
 import { QuizLobbyComponent } from './components/quiz-lobby/quiz-lobby.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { QuizLobbyComponent } from './components/quiz-lobby/quiz-lobby.component
     JoinQuizComponent,
     QuizLobbyComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
