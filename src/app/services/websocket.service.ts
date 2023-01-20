@@ -1,9 +1,37 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { io } from 'socket.io-client';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WebsocketService {
+  socket: any;
+  readonly uri: string = 'http://localhost:3000/';
 
-  constructor() { }
+  options = {
+    transports: ['websocket'],
+    upgrade: false,
+    query: {
+      headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:4200',
+      },
+    },
+  };
+
+  constructor() {
+    this.socket = io(this.uri, this.options);
+  }
+
+  listen(eventName: string) {
+    return new Observable((subscriber) => {
+      this.socket.on(eventName, (data: any) => {
+        subscriber.next(data);
+      });
+    });
+  }
+
+  emit(eventName: string, data: any) {
+    this.socket.emit(eventName, data);
+  }
 }
