@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WebsocketService } from 'src/app/services/websocket.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-quiz-lobby',
@@ -8,12 +9,22 @@ import { WebsocketService } from 'src/app/services/websocket.service';
 export class QuizLobbyComponent implements OnInit {
   constructor(private websocketService: WebsocketService) {}
 
-  users: any = [];
+  players: User[] = [];
+  quizHost: User[] = [];
 
   ngOnInit(): void {
     this.websocketService.listen('roomUsers').subscribe((data: any) => {
       console.log('roomUsers: ', data);
-      this.users = data.users;
+      this.players = [];
+      this.quizHost = [];
+      let users: any[] = data.users;
+      users.forEach((user) => {
+        if (user.isHost) {
+          this.quizHost.push(user);
+        } else {
+          this.players.push(user);
+        }
+      });
     });
   }
 }

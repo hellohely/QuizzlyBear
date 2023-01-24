@@ -2,10 +2,13 @@
   <h1>Quiz Lobby</h1>
 
   <h3>Quiz Host:</h3>
+  <ul>
+    <li *ngFor="let host of quizHost">{{ host.username }}</li>
+  </ul>
 
   <h3>Quiz Players:</h3>
   <ul>
-    <li *ngFor="let user of users">{{ user.username }}</li>
+    <li *ngFor="let player of players">{{ player.username }}</li>
   </ul>
 
   <button [routerLink]="['../']">LEAVE QUIZ</button>
