@@ -17,14 +17,12 @@ export class JoinQuizComponent implements OnInit {
   userName: string = '';
 
   enterGame() {
+    let id = this.quizId;
+    let name = this.userName;
     this.webSocketService.emit('userName', this.userName);
-    this.webSocketService.emit('join', this.quizId);
+    this.webSocketService.emit('join', { id, name });
     this.router.navigate(['/quizlobby']);
   }
 
-  ngOnInit(): void {
-    // this.webSocketService.listen('testEvent').subscribe((data) => {
-    //   console.log(data);
-    // });
-  }
+  ngOnInit(): void {}
 }
