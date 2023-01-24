@@ -8,9 +8,14 @@ import { WebsocketService } from 'src/app/services/websocket.service';
 export class QuizLobbyComponent implements OnInit {
   constructor(private webSocketService: WebsocketService) {}
 
+  userName: any = '';
+  quizId: any = '';
+
   ngOnInit(): void {
-    this.webSocketService.listen('testEvent').subscribe((data) => {
+    this.webSocketService.getUserName();
+    this.webSocketService.listen('setUserName').subscribe((data) => {
       console.log(data);
+      this.userName = data;
     });
   }
 }

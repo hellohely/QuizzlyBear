@@ -34,4 +34,8 @@ export class WebsocketService {
   emit(eventName: string, data: any) {
     this.socket.emit(eventName, data);
   }
+
+  getUserName() {
+    this.socket.emit('getUserName', this.socket.id);
+  }
 }
