@@ -1,8 +1,8 @@
 <div class="wrapper">
   <label class="formlabel">Enter quiz code</label>
-  <input type="text" [(ngModel)]="quizId" />
+  <input type="text" [(ngModel)]="quizIdInput" />
   <label class="formlabel">Enter your name</label>
-  <input type="text" [(ngModel)]="userName" />
+  <input type="text" [(ngModel)]="usernameInput" />
   <button (click)="enterGame(false)">ENTER QUIZ AS PLAYER</button>
   <button (click)="enterGame(true)">ENTER QUIZ AS HOST</button>
 </div>
