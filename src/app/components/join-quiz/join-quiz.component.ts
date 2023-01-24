@@ -16,7 +16,7 @@ export class JoinQuizComponent implements OnInit {
   quizIdInput: string = '';
   usernameInput: string = '';
 
-  enterGame(isHost: boolean) {
+  enterQuiz(isHost: boolean) {
     let quizId = this.quizIdInput;
     let username = this.usernameInput;
     this.webSocketService.emit('join', { quizId, username, isHost });

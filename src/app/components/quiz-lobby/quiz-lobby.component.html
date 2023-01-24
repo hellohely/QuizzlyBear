@@ -5,7 +5,7 @@
 
   <h3>Quiz Players:</h3>
   <ul>
-    <li>{{ userName }}</li>
+    <li *ngFor="let user of users">{{ user.username }}</li>
   </ul>
 
   <button [routerLink]="['../']">LEAVE QUIZ</button>

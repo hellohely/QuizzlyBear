@@ -6,16 +6,22 @@ import { WebsocketService } from 'src/app/services/websocket.service';
   templateUrl: './quiz-lobby.component.html',
 })
 export class QuizLobbyComponent implements OnInit {
-  constructor(private webSocketService: WebsocketService) {}
+  constructor(private websocketService: WebsocketService) {}
 
-  userName: any = '';
-  quizId: any = '';
+  // userName: any = '';
+  // quizId: any = '';
+  users: any = [];
 
   ngOnInit(): void {
-    this.webSocketService.getUserName();
-    this.webSocketService.listen('setUserName').subscribe((data) => {
-      console.log(data);
-      this.userName = data;
+    // this.websocketService.getUserName();
+    // this.websocketService.listen('setUserName').subscribe((data) => {
+    //   console.log(data);
+    //   this.userName = data;
+    // });
+
+    this.websocketService.listen('roomUsers').subscribe((data: any) => {
+      console.log('roomUsers: ', data);
+      this.users = data.users;
     });
   }
 }
