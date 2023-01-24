@@ -3,6 +3,6 @@
   <input type="text" [(ngModel)]="quizId" />
   <label class="formlabel">Enter your name</label>
   <input type="text" [(ngModel)]="userName" />
-  <button (click)="enterGame()">ENTER QUIZ AS PLAYER</button>
-  <button [routerLink]="['../quizlobby']">ENTER QUIZ AS HOST</button>
+  <button (click)="enterGame(false)">ENTER QUIZ AS PLAYER</button>
+  <button (click)="enterGame(true)">ENTER QUIZ AS HOST</button>
 </div>
