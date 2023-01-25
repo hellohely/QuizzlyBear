@@ -8,7 +8,8 @@ import { WebsocketService } from 'src/app/services/websocket.service';
   styleUrls: ['./host-quiz.component.scss'],
 })
 export class HostQuizComponent implements OnInit {
-  roomId = '63c95ee10735c32367b07256';
+  roomId = this.websocketService.roomId;
+
   constructor(
     private websocketService: WebsocketService,
     private quizService: QuizService

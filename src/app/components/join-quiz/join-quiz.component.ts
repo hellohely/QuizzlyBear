@@ -19,7 +19,7 @@ export class JoinQuizComponent implements OnInit {
   enterQuiz(isHost: boolean) {
     let quizId = this.quizIdInput;
     let username = this.usernameInput;
-    this.webSocketService.emit('join', { quizId, username, isHost });
+    this.webSocketService.join(quizId, username, isHost);
     this.router.navigate(['/quizlobby']);
   }
 
