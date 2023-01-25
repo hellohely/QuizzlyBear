@@ -14,7 +14,7 @@
     <li *ngFor="let player of players">{{ player.username }}</li>
   </ul>
 
-  <button *ngIf="userIsHost">START QUIZ</button>
+  <button *ngIf="userIsHost" (click)="startQuiz()">START QUIZ</button>
 
   <button [routerLink]="['../']">LEAVE QUIZ</button>
 </div>

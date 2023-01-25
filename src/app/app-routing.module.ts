@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { CreateQuizComponent } from './components//create-quiz/create-quiz.component';
 import { JoinQuizComponent } from './components/join-quiz/join-quiz.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { PlayQuizComponent } from './components/play-quiz/play-quiz.component';
 import { QuizLobbyComponent } from './components/quiz-lobby/quiz-lobby.component';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'createquiz', component: CreateQuizComponent },
   { path: 'joinquiz', component: JoinQuizComponent },
   { path: 'quizlobby', component: QuizLobbyComponent },
+  { path: 'playquiz', component: PlayQuizComponent },
 ];
 
 @NgModule({
