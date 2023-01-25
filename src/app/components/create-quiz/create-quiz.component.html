@@ -57,5 +57,12 @@
       </button>
     </ul>
     <button type="submit">SAVE QUIZ</button>
+    <h3 *ngIf="showQuizId">
+      Your quiz is saved with the ID: <br />
+      {{ quizId }}
+    </h3>
+    <p *ngIf="showQuizId">
+      Copy this code and share it with your friends to play!
+    </p>
   </form>
 </div>

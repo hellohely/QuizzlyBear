@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Quiz } from '../models/quiz';
 import { Question } from '../models/question';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class QuizService {
   constructor(private http: HttpClient) {}
 
   saveQuiz(quiz: Quiz) {
-    this.http
+    return this.http
       .post<any>('http://localhost:3000/quizes', JSON.stringify(quiz), {
         headers: {
           'Content-Type': 'application/json',
@@ -18,13 +19,11 @@ export class QuizService {
         observe: 'response',
         withCredentials: true,
       })
-      .subscribe((response) => {
-        console.log(response);
-      });
+      .pipe(map((response: any) => response.body._id));
   }
 
   saveQuestions(questions: Question[]) {
-    this.http
+    return this.http
       .post<any>(
         'http://localhost:3000/quizes/questions',
         JSON.stringify(questions),

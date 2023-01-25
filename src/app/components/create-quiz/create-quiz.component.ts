@@ -25,6 +25,9 @@ export class CreateQuizComponent implements OnInit {
     quizQuestions: [],
   };
 
+  quizId = '';
+  showQuizId = false;
+
   questions: Question[] = [
     {
       questionId: nanoid(),
@@ -59,7 +62,11 @@ export class CreateQuizComponent implements OnInit {
       this.quiz.quizQuestions.push(question.questionId);
     });
 
-    this.quizService.saveQuiz(this.quiz);
+    this.quizService.saveQuiz(this.quiz).subscribe((id) => {
+      this.quizId = id;
+      this.showQuizId = true;
+    });
+
     this.quizService.saveQuestions(this.questions);
   }
 
