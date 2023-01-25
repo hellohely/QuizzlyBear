@@ -46,7 +46,7 @@ export class QuizLobbyComponent implements OnInit {
       //Checks if this user is the host
       this.userIsHost = this.quizHost.some((user) => user.id === this.userId);
 
-      this.websocketService.listen('quiz').subscribe((data: any) => {
+      this.websocketService.listen('redirectUsers').subscribe((data: any) => {
         console.log(data);
         this.router.navigate(['/playquiz']);
       });
