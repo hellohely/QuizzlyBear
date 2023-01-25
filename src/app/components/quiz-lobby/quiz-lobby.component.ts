@@ -13,6 +13,10 @@ export class QuizLobbyComponent implements OnInit {
   quizHost: User[] = [];
   room: string = '';
 
+  userId = this.websocketService.socketId;
+  currentUser = this.quizHost.find((user) => user.id === this.userId);
+  userIsHost = false;
+
   ngOnInit(): void {
     this.websocketService.listen('roomUsers').subscribe((data: any) => {
       console.log('roomUsers: ', data);
@@ -21,6 +25,8 @@ export class QuizLobbyComponent implements OnInit {
       this.room = data.room;
 
       let users: any[] = data.users;
+
+      //Sorts users into players and host
       users.forEach((user) => {
         if (user.isHost) {
           this.quizHost.push(user);
@@ -28,6 +34,8 @@ export class QuizLobbyComponent implements OnInit {
           this.players.push(user);
         }
       });
+      //Checks if this user is the host
+      this.userIsHost = this.quizHost.some((user) => user.id === this.userId);
     });
   }
 }

@@ -23,6 +23,10 @@ export class WebsocketService {
     this.socket = io(this.uri, this.options);
   }
 
+  get socketId() {
+    return this.socket.id;
+  }
+
   listen(eventName: string) {
     return new Observable((subscriber) => {
       this.socket.on(eventName, (data: any) => {
