@@ -18,17 +18,10 @@ export class QuizLobbyComponent implements OnInit {
   room: string = '';
 
   userId = this.websocketService.socketId;
-  currentUser = this.quizHost.find((user) => user.id === this.userId);
   userIsHost = false;
-
-  startQuiz() {
-    console.log('Starta quizarooni');
-    this.websocketService.emit('startQuiz', this.room);
-  }
 
   ngOnInit(): void {
     this.websocketService.listen('roomUsers').subscribe((data: any) => {
-      console.log('roomUsers: ', data);
       this.players = [];
       this.quizHost = [];
       this.room = data.room;
@@ -47,9 +40,12 @@ export class QuizLobbyComponent implements OnInit {
       this.userIsHost = this.quizHost.some((user) => user.id === this.userId);
 
       this.websocketService.listen('redirectUsers').subscribe((data: any) => {
-        console.log(data);
         this.router.navigate(['/playquiz']);
       });
     });
+  }
+
+  startQuiz() {
+    this.websocketService.emit('startQuiz', this.room);
   }
 }
