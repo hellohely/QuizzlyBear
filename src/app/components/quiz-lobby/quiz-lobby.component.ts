@@ -11,12 +11,15 @@ export class QuizLobbyComponent implements OnInit {
 
   players: User[] = [];
   quizHost: User[] = [];
+  room: string = '';
 
   ngOnInit(): void {
     this.websocketService.listen('roomUsers').subscribe((data: any) => {
       console.log('roomUsers: ', data);
       this.players = [];
       this.quizHost = [];
+      this.room = data.room;
+
       let users: any[] = data.users;
       users.forEach((user) => {
         if (user.isHost) {
