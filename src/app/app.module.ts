@@ -10,6 +10,7 @@ import { JoinQuizComponent } from './components/join-quiz/join-quiz.component';
 import { QuizLobbyComponent } from './components/quiz-lobby/quiz-lobby.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlayQuizComponent } from './components/play-quiz/play-quiz.component';
+import { HostQuizComponent } from './components/host-quiz/host-quiz.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PlayQuizComponent } from './components/play-quiz/play-quiz.component';
     JoinQuizComponent,
     QuizLobbyComponent,
     PlayQuizComponent,
+    HostQuizComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
