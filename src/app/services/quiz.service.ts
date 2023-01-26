@@ -53,15 +53,15 @@ export class QuizService {
     });
   }
 
-  getQuestion(id: string) {
-    return this.http.get<any>('http://localhost:3000/quizes/question', {
+  getQuestions(questionIds: any[]) {
+    return this.http.get<any>('http://localhost:3000/quizes/questions', {
       headers: {
         'Content-Type': 'application/json',
       },
       observe: 'response',
       withCredentials: true,
       params: {
-        id: id,
+        ids: JSON.stringify(questionIds),
       },
     });
   }

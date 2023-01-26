@@ -20,10 +20,8 @@ export class HostQuizComponent implements OnInit {
     this.quizService.getQuiz(this.roomId).subscribe((response) => {
       this.questionIds = response.body.quizQuestions;
       console.log(this.questionIds);
-      this.questionIds.forEach((id) => {
-        this.quizService.getQuestion(id).subscribe((response) => {
-          console.log(response);
-        });
+      this.quizService.getQuestions(this.questionIds).subscribe((response) => {
+        console.log(response);
       });
     });
   }
