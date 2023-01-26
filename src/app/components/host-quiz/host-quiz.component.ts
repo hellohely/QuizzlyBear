@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Question } from 'src/app/models/question';
 import { QuizService } from 'src/app/services/quiz.service';
 import { WebsocketService } from 'src/app/services/websocket.service';
 
@@ -9,7 +10,8 @@ import { WebsocketService } from 'src/app/services/websocket.service';
 })
 export class HostQuizComponent implements OnInit {
   roomId = this.websocketService.roomId;
-  questionIds = [];
+  questionIds: string[] = [];
+  questions: Question[] = [];
 
   constructor(
     private websocketService: WebsocketService,
@@ -22,6 +24,7 @@ export class HostQuizComponent implements OnInit {
       console.log(this.questionIds);
       this.quizService.getQuestions(this.questionIds).subscribe((response) => {
         console.log(response);
+        this.questions = response.body;
       });
     });
   }
