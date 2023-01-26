@@ -41,19 +41,28 @@ export class QuizService {
   }
 
   getQuiz(id: string) {
-    return this.http
-      .get<any>('http://localhost:3000/quizes/quiz', {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        observe: 'response',
-        withCredentials: true,
-        params: {
-          id: id,
-        },
-      })
-      .subscribe((response) => {
-        console.log(response);
-      });
+    return this.http.get<any>('http://localhost:3000/quizes/quiz', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      observe: 'response',
+      withCredentials: true,
+      params: {
+        id: id,
+      },
+    });
+  }
+
+  getQuestion(id: string) {
+    return this.http.get<any>('http://localhost:3000/quizes/question', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      observe: 'response',
+      withCredentials: true,
+      params: {
+        id: id,
+      },
+    });
   }
 }

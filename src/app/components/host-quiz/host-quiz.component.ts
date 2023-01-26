@@ -9,6 +9,7 @@ import { WebsocketService } from 'src/app/services/websocket.service';
 })
 export class HostQuizComponent implements OnInit {
   roomId = this.websocketService.roomId;
+  questionIds = [];
 
   constructor(
     private websocketService: WebsocketService,
@@ -16,6 +17,14 @@ export class HostQuizComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.quizService.getQuiz(this.roomId);
+    this.quizService.getQuiz(this.roomId).subscribe((response) => {
+      this.questionIds = response.body.quizQuestions;
+      console.log(this.questionIds);
+      this.questionIds.forEach((id) => {
+        this.quizService.getQuestion(id).subscribe((response) => {
+          console.log(response);
+        });
+      });
+    });
   }
 }
