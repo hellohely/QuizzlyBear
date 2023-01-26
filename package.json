@@ -20,6 +20,7 @@
     "@angular/router": "^14.2.0",
     "@types/socket.io-client": "^3.0.0",
     "nanoid": "^4.0.0",
+    "plyr": "^3.7.3",
     "rxjs": "~7.5.0",
     "socket.io-client": "^4.5.4",
     "tslib": "^2.3.0",
