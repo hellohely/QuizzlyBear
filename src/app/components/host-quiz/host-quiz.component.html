@@ -1,4 +1,13 @@
-<ul *ngIf="currentQuestion">
-  <li>{{ currentQuestion.link }} <br />{{ currentQuestion.questionString }}</li>
-</ul>
-<button (click)="showNextQuestion()">Next Question</button>
+<div *ngIf="currentQuestion">
+  <iframe
+    width="560"
+    height="315"
+    [src]="youtubeLink"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+  <h3>{{ currentQuestion.questionString }}</h3>
+  <button (click)="showNextQuestion()">Next Question</button>
+</div>
