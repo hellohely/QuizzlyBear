@@ -12,6 +12,8 @@ export class HostQuizComponent implements OnInit {
   roomId = this.websocketService.roomId;
   questionIds: string[] = [];
   questions: Question[] = [];
+  currentQuestionIndex = 0;
+  currentQuestion: any;
 
   constructor(
     private websocketService: WebsocketService,
@@ -21,11 +23,23 @@ export class HostQuizComponent implements OnInit {
   ngOnInit(): void {
     this.quizService.getQuiz(this.roomId).subscribe((response) => {
       this.questionIds = response.body.quizQuestions;
-      console.log(this.questionIds);
       this.quizService.getQuestions(this.questionIds).subscribe((response) => {
-        console.log(response);
         this.questions = response.body;
+        this.currentQuestion = this.questions[this.currentQuestionIndex];
+        this.websocketService.emit(
+          'answerOptions',
+          this.currentQuestion.answerOptions
+        );
       });
     });
+  }
+
+  showNextQuestion() {
+    this.currentQuestionIndex++;
+    this.currentQuestion = this.questions[this.currentQuestionIndex];
+    this.websocketService.emit(
+      'answerOptions',
+      this.currentQuestion.answerOptions
+    );
   }
 }
