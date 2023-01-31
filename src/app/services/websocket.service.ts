@@ -48,4 +48,8 @@ export class WebsocketService {
     this.room = quizId;
     this.socket.emit('join', { quizId, username, isHost });
   }
+
+  getPoint() {
+    this.socket.emit('getPoint', this.socket.id);
+  }
 }

@@ -11,6 +11,12 @@ export class PlayQuizComponent implements OnInit {
 
   constructor(private websocketService: WebsocketService) {}
 
+  userAnswer(isAnswer: boolean) {
+    if (isAnswer === true) {
+      this.websocketService.getPoint();
+    }
+  }
+
   ngOnInit(): void {
     this.websocketService.listen('answerOptions').subscribe((data: any) => {
       this.answerOptions = data;

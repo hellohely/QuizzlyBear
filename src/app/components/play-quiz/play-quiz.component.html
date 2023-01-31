@@ -1,5 +1,6 @@
-<ul>
-  <li *ngFor="let answerOption of answerOptions">
-    {{ answerOption.answerString }}
-  </li>
-</ul>
+<button
+  *ngFor="let answerOption of answerOptions"
+  (click)="userAnswer(answerOption.isAnswer)"
+>
+  {{ answerOption.answerString }}
+</button>
