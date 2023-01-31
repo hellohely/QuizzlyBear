@@ -7,13 +7,14 @@ import { WebsocketService } from 'src/app/services/websocket.service';
   styleUrls: ['./play-quiz.component.scss'],
 })
 export class PlayQuizComponent implements OnInit {
-  questionData: any;
+  answerOptions: any;
 
   constructor(private websocketService: WebsocketService) {}
 
   ngOnInit(): void {
-    this.websocketService.listen('questionData').subscribe((data: any) => {
-      this.questionData = data;
+    this.websocketService.listen('answerOptions').subscribe((data: any) => {
+      this.answerOptions = data;
+      console.log(this.answerOptions);
     });
   }
 }
