@@ -42,6 +42,10 @@ export class HostQuizComponent implements OnInit {
         );
       });
     });
+
+    this.websocketService.listen('roomUsers').subscribe((data: any) => {
+      console.log(data);
+    });
   }
 
   showNextQuestion() {
