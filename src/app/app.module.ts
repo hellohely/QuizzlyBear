@@ -11,6 +11,7 @@ import { QuizLobbyComponent } from './components/quiz-lobby/quiz-lobby.component
 import { HttpClientModule } from '@angular/common/http';
 import { PlayQuizComponent } from './components/play-quiz/play-quiz.component';
 import { HostQuizComponent } from './components/host-quiz/host-quiz.component';
+import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HostQuizComponent } from './components/host-quiz/host-quiz.component';
     QuizLobbyComponent,
     PlayQuizComponent,
     HostQuizComponent,
+    ScoreboardComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],

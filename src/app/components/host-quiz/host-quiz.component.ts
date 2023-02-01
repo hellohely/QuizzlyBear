@@ -3,6 +3,7 @@ import { Question } from 'src/app/models/question';
 import { QuizService } from 'src/app/services/quiz.service';
 import { WebsocketService } from 'src/app/services/websocket.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-host-quiz',
@@ -20,7 +21,8 @@ export class HostQuizComponent implements OnInit {
   constructor(
     private websocketService: WebsocketService,
     private quizService: QuizService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router: Router
   ) {
     this.youtubeLink = this.sanitizer.bypassSecurityTrustResourceUrl('');
   }
@@ -46,9 +48,18 @@ export class HostQuizComponent implements OnInit {
     this.websocketService.listen('roomUsers').subscribe((data: any) => {
       console.log(data);
     });
+
+    this.websocketService.listen('redirectUsers').subscribe((data: any) => {
+      this.router.navigate(['/scoreboard']);
+    });
   }
 
   showNextQuestion() {
+    if (this.currentQuestionIndex + 1 >= this.questions.length) {
+      this.websocketService.emit('redirect', this.roomId);
+      return;
+    }
+
     this.currentQuestionIndex++;
     this.currentQuestion = this.questions[this.currentQuestionIndex];
     this.websocketService.emit(

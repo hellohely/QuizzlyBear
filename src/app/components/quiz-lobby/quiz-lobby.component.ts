@@ -50,6 +50,6 @@ export class QuizLobbyComponent implements OnInit {
   }
 
   startQuiz() {
-    this.websocketService.emit('startQuiz', this.room);
+    this.websocketService.emit('redirect', this.room);
   }
 }

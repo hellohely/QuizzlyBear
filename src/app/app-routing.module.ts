@@ -7,6 +7,7 @@ import { JoinQuizComponent } from './components/join-quiz/join-quiz.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { PlayQuizComponent } from './components/play-quiz/play-quiz.component';
 import { QuizLobbyComponent } from './components/quiz-lobby/quiz-lobby.component';
+import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'quizlobby', component: QuizLobbyComponent },
   { path: 'playquiz', component: PlayQuizComponent },
   { path: 'hostquiz', component: HostQuizComponent },
+  { path: 'scoreboard', component: ScoreboardComponent },
 ];
 
 @NgModule({

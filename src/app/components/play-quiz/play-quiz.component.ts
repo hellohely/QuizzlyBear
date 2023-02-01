@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { WebsocketService } from 'src/app/services/websocket.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { WebsocketService } from 'src/app/services/websocket.service';
 export class PlayQuizComponent implements OnInit {
   answerOptions: any;
 
-  constructor(private websocketService: WebsocketService) {}
+  constructor(
+    private websocketService: WebsocketService,
+    private router: Router
+  ) {}
 
   userAnswer(isAnswer: boolean) {
     if (isAnswer === true) {
@@ -21,6 +25,10 @@ export class PlayQuizComponent implements OnInit {
     this.websocketService.listen('answerOptions').subscribe((data: any) => {
       this.answerOptions = data;
       console.log(this.answerOptions);
+    });
+
+    this.websocketService.listen('redirectUsers').subscribe((data: any) => {
+      this.router.navigate(['/scoreboard']);
     });
   }
 }
