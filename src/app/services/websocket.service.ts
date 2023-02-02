@@ -49,6 +49,10 @@ export class WebsocketService {
     this.socket.emit('join', { quizId, username, isHost });
   }
 
+  disconnect() {
+    this.socket.disconnect();
+  }
+
   getPoint() {
     this.socket.emit('getPoint', this.socket.id);
   }

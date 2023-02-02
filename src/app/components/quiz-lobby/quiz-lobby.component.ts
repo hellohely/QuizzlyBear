@@ -49,6 +49,11 @@ export class QuizLobbyComponent implements OnInit {
     });
   }
 
+  leaveQuiz() {
+    this.websocketService.disconnect();
+    this.router.navigate(['../']);
+  }
+
   startQuiz() {
     this.websocketService.emit('redirect', this.room);
   }
