@@ -1,7 +1,12 @@
 <div class="wrapper">
   <button
     *ngFor="let answerOption of answerOptions"
+    [ngClass]="{
+      'green-border': answerOption.clicked && answerOption.isAnswer,
+      'red-border': answerOption.clicked && !answerOption.isAnswer
+    }"
     (click)="userAnswer(answerOption.isAnswer)"
+    [disabled]="isAnswered"
   >
     {{ answerOption.answerString }}
   </button>

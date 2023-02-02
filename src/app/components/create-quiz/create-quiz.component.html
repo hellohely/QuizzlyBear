@@ -18,10 +18,10 @@
     <ul>
       <li *ngFor="let question of questions; let i = index">
         <h3>Question {{ i + 1 }}</h3>
-        <label class="formlabel">Youtube Link</label>
+        <label class="formlabel">Youtube ID</label>
         <input
           type="text"
-          placeholder="https://www.youtube.com/yoursong"
+          placeholder="C-u5WLJ9Yk4"
           [(ngModel)]="question.link"
           name="youtubeLink{{ i }}"
         />
