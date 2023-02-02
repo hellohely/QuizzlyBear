@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { WebsocketService } from 'src/app/services/websocket.service';
 
@@ -8,7 +9,10 @@ import { WebsocketService } from 'src/app/services/websocket.service';
   styleUrls: ['./scoreboard.component.scss'],
 })
 export class ScoreboardComponent implements OnInit {
-  constructor(private websocketService: WebsocketService) {}
+  constructor(
+    private websocketService: WebsocketService,
+    private router: Router
+  ) {}
 
   players: User[] = [];
 
@@ -17,12 +21,18 @@ export class ScoreboardComponent implements OnInit {
     this.websocketService.listen('roomUsers').subscribe((data: any) => {
       this.players = [];
       let users = data.users;
-      //Sorts users into players and host
+
       users.forEach((user: User) => {
         if (!user.isHost) {
           this.players.push(user);
         }
       });
+      this.players.sort((a, b) => b.points - a.points);
     });
+  }
+
+  leaveQuiz() {
+    this.websocketService.disconnect();
+    this.router.navigate(['../']);
   }
 }
