@@ -28,6 +28,7 @@ export class HostQuizComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //Host makes http request to server to get quiz data
     this.quizService.getQuiz(this.roomId).subscribe((response) => {
       this.questionIds = response.body.quizQuestions;
       this.quizService.getQuestions(this.questionIds).subscribe((response) => {
@@ -38,6 +39,7 @@ export class HostQuizComponent implements OnInit {
             this.currentQuestion.link +
             '?&autoplay=1'
         );
+        //Sends answerOptions to quiz players
         this.websocketService.emit(
           'answerOptions',
           this.currentQuestion.answerOptions
@@ -50,18 +52,13 @@ export class HostQuizComponent implements OnInit {
     });
 
     this.websocketService.listen('redirectUsers').subscribe((data: any) => {
-      console.log('Jag har hört redirectUsers från servern!');
-      //Bug: Den navigerar bara till routern om spelarna inte har tryckt på rätt svar. Raden ovanför loggas oavsett.
       this.router.navigate(['/scoreboard']);
-      console.log('Jag är efter navigate raden');
     });
   }
 
   showNextQuestion() {
     if (this.currentQuestionIndex + 1 >= this.questions.length) {
       this.websocketService.emit('redirect', this.roomId);
-      console.log('Jag har skickat redirect till servern!');
-
       return;
     }
 

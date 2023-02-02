@@ -1,1 +1,8 @@
-<p>scoreboard works!</p>
+<div class="wrapper">
+  <h1>Scoreboard</h1>
+  <ul>
+    <li *ngFor="let player of players">
+      {{ player.username }} got {{ player.points }} points!
+    </li>
+  </ul>
+</div>

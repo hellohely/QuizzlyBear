@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user';
+import { WebsocketService } from 'src/app/services/websocket.service';
 
 @Component({
   selector: 'app-scoreboard',
@@ -6,7 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scoreboard.component.scss'],
 })
 export class ScoreboardComponent implements OnInit {
-  constructor() {}
+  constructor(private websocketService: WebsocketService) {}
 
-  ngOnInit(): void {}
+  players: User[] = [];
+
+  ngOnInit(): void {
+    this.websocketService.emit('getUsers', 'get');
+    this.websocketService.listen('roomUsers').subscribe((data: any) => {
+      this.players = [];
+      let users = data.users;
+      //Sorts users into players and host
+      users.forEach((user: User) => {
+        if (!user.isHost) {
+          this.players.push(user);
+        }
+      });
+    });
+  }
 }
