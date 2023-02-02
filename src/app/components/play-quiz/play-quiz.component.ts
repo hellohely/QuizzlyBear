@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ShuffleService } from 'src/app/services/shuffle.service';
 import { WebsocketService } from 'src/app/services/websocket.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class PlayQuizComponent implements OnInit {
 
   constructor(
     private websocketService: WebsocketService,
+    private shuffleService: ShuffleService,
     private router: Router
   ) {}
 
@@ -23,8 +25,8 @@ export class PlayQuizComponent implements OnInit {
 
   ngOnInit(): void {
     this.websocketService.listen('answerOptions').subscribe((data: any) => {
-      this.answerOptions = data;
-      console.log(this.answerOptions);
+      let shuffledAnswerOptions = this.shuffleService.shuffle(data);
+      this.answerOptions = shuffledAnswerOptions;
     });
 
     this.websocketService.listen('redirectUsers').subscribe((data: any) => {

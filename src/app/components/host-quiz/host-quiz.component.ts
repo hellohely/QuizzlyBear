@@ -50,13 +50,18 @@ export class HostQuizComponent implements OnInit {
     });
 
     this.websocketService.listen('redirectUsers').subscribe((data: any) => {
+      console.log('Jag har hört redirectUsers från servern!');
+      //Bug: Den navigerar bara till routern om spelarna inte har tryckt på rätt svar. Raden ovanför loggas oavsett.
       this.router.navigate(['/scoreboard']);
+      console.log('Jag är efter navigate raden');
     });
   }
 
   showNextQuestion() {
     if (this.currentQuestionIndex + 1 >= this.questions.length) {
       this.websocketService.emit('redirect', this.roomId);
+      console.log('Jag har skickat redirect till servern!');
+
       return;
     }
 
