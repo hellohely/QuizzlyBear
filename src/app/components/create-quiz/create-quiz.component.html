@@ -1,12 +1,13 @@
 <div class="wrapper">
   <h1>Create a Music Quiz!</h1>
-  <form (ngSubmit)="saveQuiz()">
+  <form (ngSubmit)="saveQuiz()" #form="ngForm">
     <label class="formlabel">Name of Quiz</label>
     <input
       type="text"
       placeholder="My Awesome Music Quiz"
       [(ngModel)]="quiz.quizName"
       name="quizName"
+      required
     />
     <label class="formlabel">Your Name</label>
     <input
@@ -14,6 +15,7 @@
       placeholder="Luke Skywalker"
       [(ngModel)]="quiz.quizCreator"
       name="creatorName"
+      required
     />
     <ul>
       <li *ngFor="let question of questions; let i = index">
@@ -24,6 +26,7 @@
           placeholder="C-u5WLJ9Yk4"
           [(ngModel)]="question.link"
           name="youtubeLink{{ i }}"
+          required
         />
         <label class="formlabel">Question Text</label>
         <input
@@ -31,6 +34,7 @@
           placeholder="What is the name of this song?"
           [(ngModel)]="question.questionString"
           name="question{{ i }}"
+          required
         />
 
         <label class="formlabel">Answer Options</label>
@@ -46,6 +50,7 @@
             placeholder="Answer"
             [(ngModel)]="answerOption.answerString"
             name="{{ answerOption.answerId }}"
+            required
           />
           <p *ngIf="answerOption.isAnswer" class="answerInfo">
             Write the incorrect answer options here
@@ -56,7 +61,7 @@
         ADD ANOTHER QUESTION
       </button>
     </ul>
-    <button type="submit">SAVE QUIZ</button>
+    <button type="submit" [disabled]="!form.valid">SAVE QUIZ</button>
     <h3 *ngIf="showQuizId">
       Your quiz is saved with the ID: <br />
       {{ quizId }}

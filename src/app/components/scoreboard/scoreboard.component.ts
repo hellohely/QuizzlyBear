@@ -32,7 +32,6 @@ export class ScoreboardComponent implements OnInit {
   }
 
   leaveQuiz() {
-    this.websocketService.disconnect();
     this.router.navigate(['../']);
   }
 }

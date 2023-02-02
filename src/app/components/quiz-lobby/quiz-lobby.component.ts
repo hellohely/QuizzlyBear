@@ -50,7 +50,6 @@ export class QuizLobbyComponent implements OnInit {
   }
 
   leaveQuiz() {
-    this.websocketService.disconnect();
     this.router.navigate(['../']);
   }
 
