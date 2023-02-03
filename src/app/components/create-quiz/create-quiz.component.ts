@@ -46,6 +46,15 @@ export class CreateQuizComponent implements OnInit {
     this.showVideos[index] = true;
   }
 
+  removeVideo(link: SafeResourceUrl) {
+    const index = this.youtubeLinks.indexOf(link);
+    if (index !== -1) {
+      this.youtubeLinks.splice(index, 1);
+    }
+    console.log('YoutubeLinks: ', this.youtubeLinks);
+    this.showVideos[index] = false;
+  }
+
   quiz: Quiz = {
     quizName: '',
     quizCreator: '',

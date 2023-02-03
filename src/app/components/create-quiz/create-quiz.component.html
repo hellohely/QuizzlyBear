@@ -44,9 +44,21 @@
           [(ngModel)]="question.link"
           name="youtubeLink{{ i }}"
           required
+          [disabled]="showVideos[i]"
         />
-        <button type="button" (click)="embedVideo(question.link, i)">
-          Preview Music Video
+        <button
+          type="button"
+          (click)="removeVideo(youtubeLinks[i])"
+          *ngIf="showVideos[i]"
+        >
+          Remove Music Video
+        </button>
+        <button
+          type="button"
+          (click)="embedVideo(question.link, i)"
+          *ngIf="!showVideos[i]"
+        >
+          Add Music Video To Quiz
         </button>
         <label class="formlabel">Question Text</label>
         <input
