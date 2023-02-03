@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { nanoid } from 'nanoid';
 import { answerOption } from 'src/app/models/answerOption';
@@ -13,11 +14,26 @@ import { QuizService } from 'src/app/services/quiz.service';
   templateUrl: './create-quiz.component.html',
 })
 export class CreateQuizComponent implements OnInit {
+  youtubeLinks: SafeResourceUrl[] = [];
+  showVideos: boolean[] = [];
+
+  newarray = [];
+
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private quizService: QuizService
+    private quizService: QuizService,
+    private sanitizer: DomSanitizer
   ) {}
+
+  embedVideo(id: string, index: number) {
+    this.youtubeLinks.push(
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        'https://www.youtube.com/embed/' + id + '?&autoplay=1'
+      )
+    );
+    this.showVideos[index] = true;
+  }
 
   quiz: Quiz = {
     quizName: '',

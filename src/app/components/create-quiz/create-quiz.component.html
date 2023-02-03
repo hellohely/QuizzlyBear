@@ -20,6 +20,16 @@
     <ul>
       <li *ngFor="let question of questions; let i = index">
         <h3>Question {{ i + 1 }}</h3>
+        <iframe
+          *ngIf="showVideos[i]"
+          width="560"
+          height="315"
+          [src]="youtubeLinks[i]"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
         <label class="formlabel">Youtube ID</label>
         <input
           type="text"
@@ -28,6 +38,9 @@
           name="youtubeLink{{ i }}"
           required
         />
+        <button type="button" (click)="embedVideo(question.link, i)">
+          Embed video
+        </button>
         <label class="formlabel">Question Text</label>
         <input
           type="text"
@@ -57,7 +70,7 @@
           </p>
         </div>
       </li>
-      <button type="button" (click)="addQuestion()">
+      <button type="button" (click)="addQuestion()" [disabled]="!form.valid">
         ADD ANOTHER QUESTION
       </button>
     </ul>
