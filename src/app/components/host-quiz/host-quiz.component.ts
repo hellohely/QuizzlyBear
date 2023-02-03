@@ -64,6 +64,11 @@ export class HostQuizComponent implements OnInit {
 
     this.currentQuestionIndex++;
     this.currentQuestion = this.questions[this.currentQuestionIndex];
+    this.youtubeLink = this.sanitizer.bypassSecurityTrustResourceUrl(
+      'https://www.youtube.com/embed/' +
+        this.currentQuestion.link +
+        '?&autoplay=1'
+    );
     this.websocketService.emit(
       'answerOptions',
       this.currentQuestion.answerOptions
