@@ -1,6 +1,15 @@
 <div class="wrapper">
-  <h1>Play a Music Quiz with your friends!</h1>
-  <button [routerLink]="['../createquiz']">CREATE QUIZ</button>
-  <button [routerLink]="['../joinquiz']">PLAY QUIZ</button>
-  <button>HOW DOES IT WORK?</button>
+  <img
+    class="logo"
+    src="assets/QuizzlyBear.png"
+    alt="QuizzlyBear"
+    [routerLink]="['/']"
+  />
+  <button class="bigger-button" [routerLink]="['../createquiz']">
+    CREATE QUIZ
+  </button>
+  <button class="bigger-button" [routerLink]="['../joinquiz']">
+    PLAY QUIZ
+  </button>
+  <button class="bigger-button">HOW DOES IT WORK?</button>
 </div>

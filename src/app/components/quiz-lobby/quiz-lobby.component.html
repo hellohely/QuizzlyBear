@@ -1,4 +1,10 @@
 <div class="wrapper">
+  <img
+    class="logo"
+    src="assets/QuizzlyBear.png"
+    alt="QuizzlyBear"
+    [routerLink]="['/']"
+  />
   <h1>Quiz Lobby</h1>
 
   <h3>Quiz Code:</h3>
@@ -14,7 +20,9 @@
     <li *ngFor="let player of players">{{ player.username }}</li>
   </ul>
 
-  <button *ngIf="userIsHost" (click)="startQuiz()">START QUIZ</button>
+  <button class="bigger-button" *ngIf="userIsHost" (click)="startQuiz()">
+    START QUIZ
+  </button>
 
   <button (click)="leaveQuiz()">LEAVE QUIZ</button>
 </div>

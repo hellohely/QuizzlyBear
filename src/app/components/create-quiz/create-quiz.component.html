@@ -1,4 +1,11 @@
 <div class="wrapper">
+  <img
+    class="logo"
+    src="assets/QuizzlyBear.png"
+    alt="QuizzlyBear"
+    [routerLink]="['/']"
+  />
+
   <h1>Create a Music Quiz!</h1>
   <form (ngSubmit)="saveQuiz()" #form="ngForm">
     <label class="formlabel">Name of Quiz</label>
@@ -33,13 +40,13 @@
         <label class="formlabel">Youtube Link</label>
         <input
           type="text"
-          placeholder="C-u5WLJ9Yk4"
+          placeholder="https://www.youtube.com/best-song-ever"
           [(ngModel)]="question.link"
           name="youtubeLink{{ i }}"
           required
         />
         <button type="button" (click)="embedVideo(question.link, i)">
-          Embed video
+          Preview Music Video
         </button>
         <label class="formlabel">Question Text</label>
         <input

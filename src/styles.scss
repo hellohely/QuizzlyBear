@@ -59,6 +59,12 @@ button {
   }
 }
 
+.bigger-button {
+  width: 250px;
+  font-size: 22px;
+  border: 2px solid #66fcf1;
+}
+
 .is-answer {
   color: rgb(105, 208, 105);
 }
@@ -185,4 +191,12 @@ form {
   z-index: 999;
   text-align: center;
   padding: 40px;
+}
+
+.logo {
+  width: 350px;
+  margin-bottom: 40px;
+  &:hover {
+    cursor: pointer;
+  }
 }
