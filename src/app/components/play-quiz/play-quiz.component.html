@@ -3,8 +3,8 @@
     [disabled]="isAnswered"
     *ngFor="let answerOption of answerOptions"
     [ngClass]="{
-      'green-border': answerOption.clicked && answerOption.isAnswer,
-      'red-border': answerOption.clicked && !answerOption.isAnswer
+      'is-answer': answerOption.clicked && answerOption.isAnswer,
+      'is-not-answer': answerOption.clicked && !answerOption.isAnswer
     }"
     (click)="userAnswer(answerOption.isAnswer)"
   >
