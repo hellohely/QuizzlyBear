@@ -200,3 +200,26 @@ form {
     cursor: pointer;
   }
 }
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: rgb(36, 35, 37);
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+a {
+  color: #66fcf1;
+
+  &:visited {
+    color: #66fcf1;
+  }
+  &:active {
+    color: #66fcf1;
+  }
+}

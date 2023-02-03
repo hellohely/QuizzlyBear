@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlayQuizComponent } from './components/play-quiz/play-quiz.component';
 import { HostQuizComponent } from './components/host-quiz/host-quiz.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
+import { HowToComponent } from './components/how-to/how-to.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
     PlayQuizComponent,
     HostQuizComponent,
     ScoreboardComponent,
+    HowToComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
