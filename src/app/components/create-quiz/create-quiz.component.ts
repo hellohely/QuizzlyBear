@@ -17,8 +17,6 @@ export class CreateQuizComponent implements OnInit {
   youtubeLinks: SafeResourceUrl[] = [];
   showVideos: boolean[] = [];
 
-  newarray = [];
-
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
@@ -26,7 +24,20 @@ export class CreateQuizComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {}
 
-  embedVideo(id: string, index: number) {
+  extractYouTubeVideoId(url: string) {
+    const regExp =
+      /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+
+    if (match && match[2].length === 11) {
+      return match[2];
+    } else {
+      return null;
+    }
+  }
+
+  embedVideo(link: string, index: number) {
+    let id = this.extractYouTubeVideoId(link);
     this.youtubeLinks.push(
       this.sanitizer.bypassSecurityTrustResourceUrl(
         'https://www.youtube.com/embed/' + id + '?&autoplay=1'
@@ -75,7 +86,11 @@ export class CreateQuizComponent implements OnInit {
 
   saveQuiz() {
     this.questions.forEach((question) => {
-      this.quiz.quizQuestions.push(question.questionId);
+      let id = this.extractYouTubeVideoId(question.link);
+      if (id !== null) {
+        question.link = id;
+        this.quiz.quizQuestions.push(question.questionId);
+      }
     });
 
     this.quizService.saveQuiz(this.quiz).subscribe((id) => {
