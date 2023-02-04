@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CreateQuizComponent } from './components//create-quiz/create-quiz.component';
+import { AboutComponent } from './components/about/about.component';
 import { HostQuizComponent } from './components/host-quiz/host-quiz.component';
 import { HowToComponent } from './components/how-to/how-to.component';
 import { JoinQuizComponent } from './components/join-quiz/join-quiz.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'hostquiz', component: HostQuizComponent },
   { path: 'scoreboard', component: ScoreboardComponent },
   { path: 'howto', component: HowToComponent },
+  { path: 'about', component: AboutComponent },
 ];
 
 @NgModule({

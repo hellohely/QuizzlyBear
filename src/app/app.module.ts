@@ -14,6 +14,7 @@ import { HostQuizComponent } from './components/host-quiz/host-quiz.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { HowToComponent } from './components/how-to/how-to.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ScoreboardComponent,
     HowToComponent,
     FooterComponent,
+    AboutComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
