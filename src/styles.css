@@ -3,7 +3,6 @@
 @import url(styles/typography.scss);
 @import url(styles/youtube.scss);
 @import url(styles/footer.scss);
-
 body {
   background-color: #121215;
   background-image: url("assets/background.jpg");
@@ -12,11 +11,8 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  //height: 100vh;
-  //overflow: hidden;
   margin: 0;
   padding: 0;
-
   background-repeat: no-repeat;
 }
 
@@ -43,16 +39,15 @@ button {
   font-family: Questrial;
   width: 200px;
   margin: 15px;
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:disabled {
-    border: 1px solid #c5c6c7;
-    &:hover {
-      cursor: default;
-    }
-  }
+}
+button:hover {
+  cursor: pointer;
+}
+button:disabled {
+  border: 1px solid #c5c6c7;
+}
+button:disabled:hover {
+  cursor: default;
 }
 
 .bigger-button {
@@ -111,10 +106,9 @@ form {
   margin-left: 15px;
   display: flex;
   align-items: center;
-
-  p {
-    margin-left: 15px;
-  }
+}
+.correct p {
+  margin-left: 15px;
 }
 
 .answerInfo {
@@ -135,23 +129,22 @@ form {
 .logo {
   width: 350px;
   margin-bottom: 40px;
-  &:hover {
-    cursor: pointer;
-  }
+}
+.logo:hover {
+  cursor: pointer;
 }
 
 a {
   color: #66fcf1;
-
-  &:visited {
-    color: #66fcf1;
-  }
-  &:active {
-    color: #66fcf1;
-  }
+}
+a:visited {
+  color: #66fcf1;
+}
+a:active {
+  color: #66fcf1;
 }
 
 .infoText {
   max-width: 60%;
   text-align: center;
-}
+}/*# sourceMappingURL=styles.css.map */
