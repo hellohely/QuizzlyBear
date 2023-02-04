@@ -93,7 +93,9 @@
         ADD ANOTHER QUESTION
       </button>
     </ul>
-    <button type="submit" [disabled]="!form.valid">SAVE QUIZ</button>
+    <button class="bigger-button" type="submit" [disabled]="!form.valid">
+      SAVE QUIZ
+    </button>
     <h3 *ngIf="showQuizId">
       Your quiz is saved with the ID: <br />
       {{ quizId }}

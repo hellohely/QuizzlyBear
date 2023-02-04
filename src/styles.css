@@ -53,6 +53,7 @@ button:disabled:hover {
   width: 250px;
   font-size: 22px;
   border: 2px solid #66fcf1;
+  align-self: center;
 }
 
 .is-answer {
@@ -82,7 +83,8 @@ input {
 
 .wrapper {
   background-color: rgba(0, 0, 0, 0.85);
-  margin-top: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,7 +95,6 @@ input {
   margin-right: auto;
   padding-top: 40px;
   padding-bottom: 40px;
-  margin-bottom: 100px;
 }
 
 form {
@@ -126,7 +127,7 @@ form {
 }
 
 .logo {
-  width: 350px;
+  width: 200px;
   margin-bottom: 40px;
 }
 .logo:hover {
@@ -167,4 +168,18 @@ a:active {
 .iframeWrapper {
   overflow: hidden;
   max-width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .logo {
+    width: 350px;
+    margin-bottom: 40px;
+  }
+  .logo:hover {
+    cursor: pointer;
+  }
+  .wrapper {
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
 }/*# sourceMappingURL=styles.css.map */
