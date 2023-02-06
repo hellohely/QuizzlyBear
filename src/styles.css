@@ -145,8 +145,21 @@ a:active {
 }
 
 .infoText {
-  max-width: 60%;
+  max-width: 90%;
   text-align: center;
+}
+
+.scores {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.controls {
+  margin-top: 0px;
+}
+
+.userList {
+  font-size: 24px;
 }
 
 .frame-container {
@@ -181,5 +194,8 @@ a:active {
   .wrapper {
     margin-top: 50px;
     margin-bottom: 100px;
+  }
+  .infoText {
+    max-width: 60%;
   }
 }/*# sourceMappingURL=styles.css.map */

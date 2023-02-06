@@ -1,12 +1,18 @@
 <div class="wrapper">
-  <h1>Scoreboard</h1>
+  <img
+    class="logo"
+    src="assets/QuizzlyBear.png"
+    alt="QuizzlyBear"
+    [routerLink]="['/']"
+  />
+  <h1>The results are in!</h1>
   <ul>
-    <li *ngFor="let player of players">
-      {{ player.username }} got {{ player.points }} points!
+    <li class="scores" *ngFor="let player of players">
+      {{ player.username }}: {{ player.points }} points
     </li>
   </ul>
 
-  <button (click)="leaveQuiz()">Home</button>
+  <button (click)="leaveQuiz()">HOME</button>
 </div>
 
 <app-footer></app-footer>

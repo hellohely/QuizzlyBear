@@ -5,15 +5,30 @@
     alt="QuizzlyBear"
     [routerLink]="['/']"
   />
-
-  <p>63dd925fd08ef2a0a5a43194</p>
-
-  <label class="formlabel">Enter quiz code</label>
-  <input type="text" [(ngModel)]="quizIdInput" />
-  <label class="formlabel">Enter your name</label>
-  <input type="text" [(ngModel)]="usernameInput" />
-  <button (click)="enterQuiz(false)">ENTER QUIZ AS PLAYER</button>
-  <button (click)="enterQuiz(true)">ENTER QUIZ AS HOST</button>
+  <form #form="ngForm">
+    <label class="formlabel">Enter quiz code</label>
+    <input
+      type="text"
+      [(ngModel)]="quizIdInput"
+      placeholder="Quiz Code"
+      name="quizCode"
+      required
+    />
+    <label class="formlabel">Enter your name</label>
+    <input
+      type="text"
+      [(ngModel)]="usernameInput"
+      placeholder="Your Name"
+      name="userName"
+      required
+    />
+    <button (click)="enterQuiz(false)" [disabled]="!form.valid">
+      ENTER QUIZ AS PLAYER
+    </button>
+    <button (click)="enterQuiz(true)" [disabled]="!form.valid">
+      ENTER QUIZ AS HOST
+    </button>
+  </form>
 </div>
 
 <app-footer></app-footer>

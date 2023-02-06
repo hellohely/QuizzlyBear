@@ -5,19 +5,22 @@
     alt="QuizzlyBear"
     [routerLink]="['/']"
   />
-  <h1>Quiz Lobby</h1>
 
-  <h3>Quiz Code:</h3>
-  <p>{{ room }}</p>
+  <h1>Quiz: {{ quizName }} by {{ quizCreator }}</h1>
 
-  <h3>Quiz Host:</h3>
+  <p>Quiz Code:</p>
+  <h3>{{ room }}</h3>
+
+  <p>Quiz Host:</p>
   <ul>
-    <li *ngFor="let host of quizHost">{{ host.username }}</li>
+    <li class="userList" *ngFor="let host of quizHost">{{ host.username }}</li>
   </ul>
 
-  <h3>Quiz Players:</h3>
+  <p>Quiz Players:</p>
   <ul>
-    <li *ngFor="let player of players">{{ player.username }}</li>
+    <li class="userList" *ngFor="let player of players">
+      {{ player.username }}
+    </li>
   </ul>
 
   <button class="bigger-button" *ngIf="userIsHost" (click)="startQuiz()">

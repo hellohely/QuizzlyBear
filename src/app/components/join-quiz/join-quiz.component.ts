@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { WebsocketService } from 'src/app/services/websocket.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-join-quiz',

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WebsocketService } from 'src/app/services/websocket.service';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
+import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
   selector: 'app-quiz-lobby',
@@ -10,12 +11,15 @@ import { Router } from '@angular/router';
 export class QuizLobbyComponent implements OnInit {
   constructor(
     private websocketService: WebsocketService,
+    private quizService: QuizService,
     private router: Router
   ) {}
 
   players: User[] = [];
   quizHost: User[] = [];
   room: string = '';
+  quizName: string = '';
+  quizCreator: string = '';
 
   userId = this.websocketService.socketId;
   userIsHost = false;
@@ -27,6 +31,11 @@ export class QuizLobbyComponent implements OnInit {
       this.room = data.room;
 
       let users: any[] = data.users;
+
+      this.quizService.getQuiz(data.room).subscribe((response) => {
+        this.quizName = response.body.quizName;
+        this.quizCreator = response.body.quizCreator;
+      });
 
       //Sorts users into players and host
       users.forEach((user) => {
