@@ -14,11 +14,6 @@ export class WebsocketService {
   options = {
     transports: ['websocket'],
     upgrade: false,
-    query: {
-      headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
-      },
-    },
   };
 
   constructor() {
