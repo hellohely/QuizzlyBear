@@ -11,33 +11,31 @@ export class QuizService {
   constructor(private http: HttpClient) {}
 
   saveQuiz(quiz: Quiz) {
-    return this.http
-      .post<any>('http://localhost:3000/quizes', JSON.stringify(quiz), {
+    return this.http.post<any>(
+      'http://localhost:3000/quizes',
+      JSON.stringify(quiz),
+      {
         headers: {
           'Content-Type': 'application/json',
         },
         observe: 'response',
         withCredentials: true,
-      })
-      .pipe(map((response: any) => response.body._id));
+      }
+    );
   }
 
   saveQuestions(questions: Question[]) {
-    return this.http
-      .post<any>(
-        'http://localhost:3000/quizes/questions',
-        JSON.stringify(questions),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          observe: 'response',
-          withCredentials: true,
-        }
-      )
-      .subscribe((response) => {
-        console.log(response);
-      });
+    return this.http.post<any>(
+      'http://localhost:3000/quizes/questions',
+      JSON.stringify(questions),
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        observe: 'response',
+        withCredentials: true,
+      }
+    );
   }
 
   getQuiz(id: string) {

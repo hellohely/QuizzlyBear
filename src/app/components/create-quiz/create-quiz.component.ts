@@ -16,6 +16,9 @@ import { QuizService } from 'src/app/services/quiz.service';
 export class CreateQuizComponent implements OnInit {
   youtubeLinks: SafeResourceUrl[] = [];
   showVideos: boolean[] = [];
+  quizId = '';
+  showQuizId = false;
+  savingError = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -61,9 +64,6 @@ export class CreateQuizComponent implements OnInit {
     quizQuestions: [],
   };
 
-  quizId = '';
-  showQuizId = false;
-
   questions: Question[] = [
     {
       questionId: nanoid(),
@@ -102,12 +102,38 @@ export class CreateQuizComponent implements OnInit {
       }
     });
 
-    this.quizService.saveQuiz(this.quiz).subscribe((id) => {
-      this.quizId = id;
-      this.showQuizId = true;
+    this.quizService.saveQuiz(this.quiz).subscribe({
+      next: (res) => {
+        if (res.status === 200) {
+          this.quizId = res.body._id;
+          this.quizService.saveQuestions(this.questions).subscribe({
+            next: (res) => {
+              if (res.status === 200) {
+                this.showQuizId = true;
+              } else {
+                console.error(
+                  'Failed to save questions. Response status: ' + res.status
+                );
+                this.savingError = true;
+              }
+            },
+            error: (error) => {
+              console.error('Error saving questions: ' + error.message);
+              this.savingError = true;
+            },
+            complete: () => {},
+          });
+        } else {
+          console.error('Failed to save quiz. Response status: ' + res.status);
+          this.savingError = true;
+        }
+      },
+      error: (error) => {
+        console.error('Error saving quiz: ' + error.message);
+        this.savingError = true;
+      },
+      complete: () => {},
     });
-
-    this.quizService.saveQuestions(this.questions);
   }
 
   ngOnInit(): void {}

@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="!showQuizId! && !savingError">
   <img
     class="logo"
     src="assets/QuizzlyBear.png"
@@ -96,14 +96,34 @@
     <button class="bigger-button" type="submit" [disabled]="!form.valid">
       SAVE QUIZ
     </button>
-    <h3 *ngIf="showQuizId">
-      Your quiz is saved with the ID: <br />
-      {{ quizId }}
-    </h3>
-    <p *ngIf="showQuizId">
-      Copy this code and share it with your friends to play!
-    </p>
   </form>
+</div>
+
+<div class="wrapper" *ngIf="showQuizId">
+  <img
+    class="logo"
+    src="assets/QuizzlyBear.png"
+    alt="QuizzlyBear"
+    [routerLink]="['/']"
+  />
+  <h3>Hooray, your quiz is successfully saved with ID:</h3>
+  <h1>{{ quizId }}</h1>
+
+  <p class="infoText">Copy this code and share it with your friends to play!</p>
+</div>
+
+<div class="wrapper" *ngIf="savingError">
+  <img
+    class="logo"
+    src="assets/QuizzlyBear.png"
+    alt="QuizzlyBear"
+    [routerLink]="['/']"
+  />
+  <h1>Oh no!</h1>
+
+  <p class="infoText">
+    Something went wrong while saving this quiz. Please try again later.
+  </p>
 </div>
 
 <app-footer></app-footer>
