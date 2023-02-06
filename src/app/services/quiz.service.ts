@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Quiz } from '../models/quiz';
 import { Question } from '../models/question';
 import { map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class QuizService {
 
   saveQuiz(quiz: Quiz) {
     return this.http.post<any>(
-      'http://localhost:3000/quizes',
+      environment.apiUrl + 'quizes',
       JSON.stringify(quiz),
       {
         headers: {
@@ -26,7 +27,7 @@ export class QuizService {
 
   saveQuestions(questions: Question[]) {
     return this.http.post<any>(
-      'http://localhost:3000/quizes/questions',
+      environment.apiUrl + 'quizes/questions',
       JSON.stringify(questions),
       {
         headers: {
@@ -39,7 +40,7 @@ export class QuizService {
   }
 
   getQuiz(id: string) {
-    return this.http.get<any>('http://localhost:3000/quizes/quiz', {
+    return this.http.get<any>(environment.apiUrl + 'quizes/quiz', {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -52,7 +53,7 @@ export class QuizService {
   }
 
   getQuestions(questionIds: any[]) {
-    return this.http.get<any>('http://localhost:3000/quizes/questions', {
+    return this.http.get<any>(environment.apiUrl + 'quizes/questions', {
       headers: {
         'Content-Type': 'application/json',
       },
