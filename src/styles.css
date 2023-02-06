@@ -135,7 +135,7 @@ form {
 }
 
 a {
-  color: #66fcf1;
+  color: #66fcf2;
 }
 a:visited {
   color: #66fcf1;
@@ -156,6 +156,15 @@ a:active {
 
 .controls {
   margin-top: 0px;
+}
+.controls li {
+  padding: 15px;
+}
+
+.control {
+  border: 1px solid #66fcf2;
+  padding: 7px;
+  margin-right: 5px;
 }
 
 .userList {
