@@ -171,6 +171,12 @@ a:active {
   font-size: 24px;
 }
 
+.code {
+  border: 2px solid #66fcf2;
+  text-align: center;
+  padding: 15px;
+}
+
 .frame-container {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */

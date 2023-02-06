@@ -6,10 +6,13 @@
     [routerLink]="['/']"
   />
 
-  <h1>Quiz: {{ quizName }} by {{ quizCreator }}</h1>
+  <h1>{{ quizName }}</h1>
+  <h3>Made by {{ quizCreator }}</h3>
 
-  <p>Quiz Code:</p>
-  <h3>{{ room }}</h3>
+  <div class="code">
+    <p>Quiz Code:</p>
+    <h3>{{ room }}</h3>
+  </div>
 
   <p>Quiz Host:</p>
   <ul>
