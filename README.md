@@ -20,7 +20,7 @@ With the ability to customize their own quizzes and use YouTube videos, users ha
 
 ## Tech Stack
 
-The application is built in **Typescript** using **Angular** framework styled with **SCSS** and with real-time communication using the **Socket.io** library. The application has a **Node.js** backend using the **Express** framework and the applications data is stored in a **MongoDB** database.
+The application is built in **TypeScript** using **Angular** framework styled with **SCSS** and with real-time communication using the **Socket.io** library. The application has a **Node.js** backend using the **Express** framework and the applications data is stored in a **MongoDB** database.
 
 NPM Packages installed:
 nanoid, socket.io
